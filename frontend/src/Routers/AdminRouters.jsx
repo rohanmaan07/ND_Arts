@@ -8,8 +8,10 @@ function AdminRouters() {
   return (
     <div>
       <Routes>
-
+        {/* ✅ agar sirf /admin hai toh /admin/products pe bhej do */}
         <Route path="/" element={<Navigate to="products" />} />
+
+        {/* ✅ baaki sab Admin component handle karega */}
         <Route path="/*" element={<Admin />} />
       </Routes>
     </div>
