@@ -153,10 +153,10 @@ const Admin = () => {
         <Toolbar />
         
      <Routes>
-          <Route path="/products" element={<ProductAd />} />
-          <Route path="/customs" element={<CustomOrders />} />
-          <Route path="/orders" element={<OrdersAd />} />
-          <Route path="/product/create" element={<Create />} />
+          <Route path="products" element={<ProductAd />} />
+          <Route path="customs" element={<CustomOrders />} />
+          <Route path="orders" element={<OrdersAd />} />
+          <Route path="product/create" element={<Create />} />
         </Routes>
 
       </Box>
