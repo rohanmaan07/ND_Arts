@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Loader } from "../Pages/Loader";
 import ClothingSection from "./ClothingSection";
+import { API_BASE_URL } from "../Config/apiConfig";
 
 function Clothing() {
   const [sections, setSections] = useState([]);
@@ -9,7 +10,7 @@ function Clothing() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/products/clothing")
+    .get(`${API_BASE_URL}/api/products/clothing`)
       .then((res) => {
         const products = res.data || [];
         // console.log("Products fetched:", products);
