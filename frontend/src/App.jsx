@@ -4,9 +4,7 @@ import CustomerRoutes from "./Routers/CustomerRoutes";
 import AdminRouters from "./Routers/AdminRouters";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { LOGIN_SUCCESS } from "./Store/ActionType"; // ✅ adjust path if needed
-import Login from "./Pages/Login";
-import Register from "./Pages/Register";
+import { LOGIN_SUCCESS } from "./Store/ActionType"; 
 
 function App() {
   const dispatch = useDispatch();
@@ -30,17 +28,22 @@ function App() {
   const savedToken = localStorage.getItem("jwt");
 
   return (
-  <div style={{ backgroundColor: "rgb(1, 9, 12)" }}>
-    <Routes>
-      {savedUser && savedToken && savedUser.role === "admin" ? (
-        <Route path="/admin/*" element={<AdminRouters />} />
-      ) : (
-        <Route path="/*" element={<CustomerRoutes />} />
-      )}
-    </Routes>
-  </div>
-);
-
+    <div style={{ backgroundColor: "rgb(1, 9, 12)" }}>
+      <Routes>
+        {/* ✅ Agar admin hai */}
+        {savedUser && savedToken && savedUser.role === "admin" ? (
+          <>
+            {/* root / pe direct admin/products */}
+            <Route path="/" element={<Navigate to="/admin/products" />} />
+            <Route path="/admin/*" element={<AdminRouters />} />
+          </>
+        ) : (
+          <>
+            {/* Agar customer hai */}
+            <Route path="/*" element={<CustomerRoutes />} />
+          </>
+        )}
+      </Routes>
+    </div>
+  );
 }
-
-export default App;
