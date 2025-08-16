@@ -9,7 +9,8 @@ function AdminRouters() {
     <div>
       <Routes>
         {/* ✅ agar sirf /admin hai toh /admin/products pe bhej do */}
-        <Route path="/" element={<Navigate to="products" />} />
+        <Route path="/" element={<Navigate to="/admin/products" />} />
+
 
         {/* ✅ baaki sab Admin component handle karega */}
         <Route path="/*" element={<Admin />} />
