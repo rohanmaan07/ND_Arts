@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Paper, Typography, Stack, TextField, Button } from "@mui/material";
 import axios from "axios";
+import { API_BASE_URL } from "../Config/apiConfig";
 
 const Profiles = () => {
   const [formData, setFormData] = useState({
@@ -70,7 +71,7 @@ useEffect(() => {
     const token = localStorage.getItem("jwt");
 
     try {
-      const res = await axios.put("http://localhost:8080/api/users/profile", formData, {
+      const res = await axios.put(`${API_BASE_URL}/api/users/profile`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
