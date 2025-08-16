@@ -1,30 +1,35 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../Config/apiConfig";
+import { Loader } from "../Pages/Loader";
 
 const CustomOrders = () => {
   const [orders, setOrders] = useState([]);
   const [previewImg, setPreviewImg] = useState(null);
+  const [loading, setLoading] = useState(true); // loader state
   const token = localStorage.getItem("jwt");
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("https://nd-arts.onrender.com/api/custom-orders", {
+        const res = await axios.get(`${API_BASE_URL}/api/custom-orders`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setOrders(res.data);
       } catch (err) {
         console.error("Error fetching custom orders", err);
+      } finally {
+        setLoading(false); // loading khatam
       }
     };
     fetchOrders();
   }, [token]);
 
-  // Toggle completion status by calling backend and updating state
+  // Toggle completion status
   const markAsCompleted = async (id, currentStatus) => {
     try {
       const res = await axios.patch(
-        `https://nd-arts.onrender.com/api/custom-orders/${id}/status`,
+        `${API_BASE_URL}/api/custom-orders/${id}/status`,
         { isCompleted: !currentStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -39,6 +44,10 @@ const CustomOrders = () => {
       alert("Failed to update order status.");
     }
   };
+
+  if (loading) {
+    return <Loader />; // loader jab tak data aa raha hai
+  }
 
   return (
     <div style={{ padding: "20px" }}>
@@ -71,7 +80,8 @@ const CustomOrders = () => {
             <b>Dress Type:</b> {order.dressType}
           </p>
           <p>
-            <b>Address:</b> {order.address}, {order.city}, {order.state} {order.zip}
+            <b>Address:</b> {order.address}, {order.city}, {order.state}{" "}
+            {order.zip}
           </p>
           <p>
             <b>Phone:</b> {order.phone}
