@@ -165,9 +165,7 @@ const Order = () => {
                         variant="subtitle1"
                         sx={{ fontWeight: 600, mt: 0.5, color: "#4caf50" }}
                       >
-                        ₹{order.orderItems[0]?.price
-                          ? order.orderItems.price
-                          : "0"}
+                        ₹{order.orderItems.reduce((acc, item) => acc + (item.price || 0), 0)}
                       </Typography>
                     </Box>
 
