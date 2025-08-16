@@ -3,6 +3,7 @@ import axios from "axios";
 import HomeCarousel from "../components/HomeCarousel";
 import HomeSectionCar from "../components/HomeSectionCar";
 import { Loader } from "./Loader";
+import { API_BASE_URL } from "../Config/apiConfig";
 
 function HomePage() {
   const [sections, setSections] = useState([]);
@@ -10,7 +11,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/products/homepage") // 🔁 API call
+      .get(`${API_BASE_URL}/api/products/homepage`) // 🔁 API call
       .then((res) => {
         setSections(res.data); // 👈 This contains sectionName + products
       })
