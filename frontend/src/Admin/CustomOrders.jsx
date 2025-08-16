@@ -9,7 +9,7 @@ const CustomOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/custom-orders", {
+        const res = await axios.get("https://nd-arts.onrender.com/api/custom-orders", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setOrders(res.data);
@@ -24,7 +24,7 @@ const CustomOrders = () => {
   const markAsCompleted = async (id, currentStatus) => {
     try {
       const res = await axios.patch(
-        `http://localhost:8080/api/custom-orders/${id}/status`,
+        `https://nd-arts.onrender.com/api/custom-orders/${id}/status`,
         { isCompleted: !currentStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
