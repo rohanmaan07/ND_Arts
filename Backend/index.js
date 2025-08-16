@@ -21,8 +21,12 @@ app.use('/uploads/customOrders', express.static(path.join(__dirname, 'uploads/cu
 
 
 app.use(express.json());
+
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: [
+    "http://localhost:5173",
+    "https://nd-arts-2grq.onrender.com"
+  ],
   credentials: true,
 }));
 
