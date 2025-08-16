@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Paper, Typography, Button, Stack } from "@mui/material";
 import axios from "axios";
+import { API_BASE_URL } from "../Config/apiConfig";
 
 const Customize = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +45,7 @@ const Customize = () => {
 
       const token = localStorage.getItem("jwt");
       const res = await axios.post(
-        "http://localhost:8080/api/custom-orders",
+        `${API_BASE_URL}/api/custom-orders`,
         data,
         {
           headers: {
@@ -90,7 +91,7 @@ const Customize = () => {
 
       // Get Razorpay order from backend
       const { data } = await axios.post(
-        "http://localhost:8080/api/payments/customize",
+        `${API_BASE_URL}/api/payments/customize`,
         {
           name: `${firstname} ${lastname}`,
           contact: phone,
