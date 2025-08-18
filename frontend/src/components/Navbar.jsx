@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="text-[#DCE3E9] relative">
+    <nav className="text-[#DCE3E9]  relative sticky top-0 left-0 w-full z-50 " style={{ backgroundColor: "rgb(1, 9, 12)" }}>
       {/* Top Navbar */}
       <div className="max-w-7xl px-6 py-6 flex items-center">
         {/* Left side: Logo + main menu desktop */}
@@ -138,7 +138,7 @@ const Navbar = () => {
 
       {/* Mobile Full Screen Menu */}
       {open && (
-        <div className="fixed inset-0 bg-[#1F3B53] text-[#DCE3E9] flex flex-col justify-center items-center z-50">
+        <div className="fixed inset-0  text-[#DCE3E9] flex flex-col justify-center items-center z-50" style={{ backgroundColor: "rgb(1, 9, 12)" }}>
           <ul className="flex flex-col gap-25 text-4xl font-medium text-center">
             <li
               onClick={() => goTo("/clothing")}
