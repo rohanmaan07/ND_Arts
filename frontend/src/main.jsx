@@ -6,10 +6,8 @@ import { Provider } from "react-redux";
 import { store } from "./Store/Store.js";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
-const clientId = "652150709543-rapu1qtl8h3rv7gmfujif8hkj8uqd70o.apps.googleusercontent.com";
-
 createRoot(document.getElementById("root")).render(
-  <GoogleOAuthProvider clientId={clientId}>
+  <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
     <BrowserRouter>
       <Provider store={store}>
         <App />
