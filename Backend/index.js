@@ -25,7 +25,8 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://nd-arts-2grq.onrender.com"
+    "https://nd-arts-2grq.onrender.com",
+    "https://ndarts.vercel.app"
   ],
   credentials: true,
 }));
